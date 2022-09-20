@@ -1,0 +1,65 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+  function Header(props) {
+
+
+  return (
+  <main>
+    <div className="py-1 bg-black">
+      <div className="container">
+        <div className="row no-gutters d-flex align-items-start align-items-center px-md-0">
+          <div className="col-lg-12 d-block">
+            <div className="row d-flex">
+              <div className="col-md pr-4 d-flex topper align-items-center">
+                <div className="icon mr-2 d-flex justify-content-center align-items-center"><span className="icon-phone2" /></div>
+                <span className="text">+ 1235 2355 98</span>
+              </div>
+              <div className="col-md pr-4 d-flex topper align-items-center">
+                <div className="icon mr-2 d-flex justify-content-center align-items-center"><span className="icon-paper-plane" /></div>
+                <span className="text">youremail@email.com</span>
+              </div>
+              <div className="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+                <span className="text">3-5 Business days delivery &amp; Free Returns</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div className="container">
+        <a className="navbar-brand" href="index.html">Minishop</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="oi oi-menu" /> Menu
+        </button>
+        <div className="collapse navbar-collapse" id="ftco-nav">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item active"><NavLink exact to={"/"} className="nav-link">Home</NavLink></li>
+            <li className="nav-item dropdown"> 
+              <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
+              <div className="dropdown-menu" aria-labelledby="dropdown04">
+                <NavLink className="dropdown-item" exact to={"/Shop"}>Shop</NavLink>
+                <NavLink className="dropdown-item"exact to={"/SingleProduct"}>Single Product</NavLink>
+                <NavLink className="dropdown-item" exact to={"/Cart"} >Cart</NavLink>
+                <NavLink className="dropdown-item"  exact to={"/CheckOut"}>Checkout</NavLink>
+              </div>
+            </li>
+            <li className="nav-item"><NavLink exact to={"/About"} className="nav-link">About</NavLink></li>
+            <li className="nav-item"><NavLink exact to={"/Blog"} className="nav-link">Blog</NavLink></li>
+            <li className="nav-item"><NavLink exact to={"/Contact"} className="nav-link">Contact</NavLink></li>
+            <li className="nav-item cta cta-colored"><a href="cart.html" className="nav-link"><span className="icon-shopping_cart" />[0]</a></li>
+            <li className="nav-item">
+            <NavLink to="/Signup" className="appointment-btn scrollto">
+                                <span className="d-none d-md-inline">Login/ Signup</span>
+                        </NavLink>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </main>
+  );
+}
+  export default Header;
