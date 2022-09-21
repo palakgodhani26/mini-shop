@@ -13,6 +13,7 @@ import Cart from './Container/Cart/Cart';
 import SingleProduct from './Container/SingleProduct/SingleProduct';
 import CheckOut from './Container/CheckOut/CheckOut';
 import Signup from './Container/Login/Signup/Login/Signup';
+import Refexample from './Container/RefExample/RefExample';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path={"/SingleProduct"} exact component={SingleProduct} />
         <Route path={"/CheckOut"} exact component={CheckOut} />
         <Route path={"/Signup"} exact component={Signup} />
+        <Route path={"/Refexample"} exact component={Refexample} />
+
 
 
 

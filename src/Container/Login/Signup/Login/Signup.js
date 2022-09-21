@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { Form } from 'reactstrap';
-import { useFormik, Formik } from 'formik';
+import { Form, useFormik, Formik } from 'formik';
 import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { signInAction, signUpAction } from '../../../../Redux/Action/Login.Action';
 
 function Signup(props) {
     const [user, setUser] = useState('login');
@@ -42,25 +39,17 @@ function Signup(props) {
     }
 
     let schema = yup.object().shape(schemaObj);
-    const dispatch = useDispatch();
+
     const handleData = (values) => {
-        // let localData = JSON.parse(localStorage.getItem("user"));
-
-        // if (localData === null) {
-        //     localStorage.setItem("user", JSON.stringify([values]));
-
-        // }else {
-        //     localData.push(values);
-        //     localStorage.setItem("user", JSON.stringify(localData));
-        // }
-        // console.log(values);
-        dispatch(signUpAction(values));
-    }
-
-    const handleLogin = (values) => {
-        //localStorage.setItem("user","123");
-        dispatch(signInAction(values));
-        //dispatch(forgotPasswordAction(values));
+        let localData = JSON.parse(localStorage.getItem("user"));
+        if (localData === null) {
+            localStorage.setItem("user", JSON.stringify([values]));
+    
+        } else {
+            localData.push(values);
+            localStorage.setItem("user", JSON.stringify(localData));
+        }
+        console.log(values);
     }
 
     const formikobj = useFormik({
@@ -68,13 +57,8 @@ function Signup(props) {
         validationSchema: schema,
 
         onSubmit: values => {
-            if (user === "login") {
-                handleLogin(values);
-            } else {
-                handleData(values);
-            }
+            handleData(values);
         },
-        enableReinitialize: true
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formikobj;
@@ -92,7 +76,7 @@ function Signup(props) {
                         }
                     </div>
                     <Formik values={formikobj}>
-                        <Form onSubmit={handleSubmit} className="php-email-form">
+                        <Form onSubmit={handleSubmit} method="post" role="form" className="php-email-form">
                             {
                                 reset === "true" ?
                                     null :
@@ -110,11 +94,15 @@ function Signup(props) {
                                 <div class="validate"></div>
                                 <p>{errors.email && touched.email ? errors.email : ''}</p>
                             </div>
-                            <div class="col-md-4 form-group mt-3 mt-md-0">
-                                <input onChange={handleChange} onBlur={handleBlur} type="password" className="form-control" name="password" id="password" placeholder="Your Password" />
-                                <div class="validate" />
-                                <p>{errors.password && touched.password ? errors.password : ''}</p>
-                            </div>
+                            {
+                                reset === "true" ?
+                                    null :
+                                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                                        <input onChange={handleChange} onBlur={handleBlur} type="password" className="form-control" name="password" id="password" placeholder="Your Password" />
+                                        <div class="validate" />
+                                        <p>{errors.password && touched.password ? errors.password : ''}</p>
+                                    </div>
+                            }
                             {
                                 reset === "true" ?
                                     <div class="text-center"><button type="submit">Submit</button></div>

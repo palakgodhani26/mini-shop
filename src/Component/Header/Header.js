@@ -1,8 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
   function Header(props) {
-
 
   return (
   <main>
@@ -50,11 +48,13 @@ import { NavLink } from 'react-router-dom';
             <li className="nav-item"><NavLink exact to={"/Contact"} className="nav-link">Contact</NavLink></li>
             <li className="nav-item cta cta-colored"><a href="cart.html" className="nav-link"><span className="icon-shopping_cart" />[0]</a></li>
             <li className="nav-item">
-            <NavLink to="/Signup" className="appointment-btn scrollto">
-                                <span className="d-none d-md-inline">Login/ Signup</span>
+              <div className='quote_btn-container ml-0 ml-lg-4 d-flex justify-content-center'>
+              <NavLink to="Login/Signup" className="custom_yellow_btn">
+                                <span>Login/ Signup</span>
                         </NavLink>
+              </div>
+              <Link className='custom_yellow_btn' to={"/refexample"}>Refexample</Link>
             </li>
-            
           </ul>
         </div>
       </div>

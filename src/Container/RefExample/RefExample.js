@@ -34,7 +34,7 @@ function Refexample() {
                 <input ref={cofpasswordRef} type="password" name="password" placeholder="Conform Password"/>
                 <br></br>
                 <br></br>
-                <button class="appointment-btn scrollto" onClick={() => handleSubmit()}>Submit</button>
+                <button class="custom_yellow_btn" onClick={() => handleSubmit()}>Submit</button>
             </center>
         </div>
     );
